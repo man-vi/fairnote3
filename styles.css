@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.centered-message {
+    text-align: center; /* Center the text */
+    margin: 20px 0; /* Add some vertical space */
+    color: #555; /* Optional: Change text color */
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center; /* Center text inside the container */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 20px; /* Spacing below the button */
+}
+
+.image-button img {
+    width: 80px; /* Adjust size for better visibility */
+    height: auto;
+    transition: transform 0.2s; /* Add a subtle scaling effect */
+}
+
+.image-button:active img {
+    transform: scale(0.95); /* Slightly shrink the image on click */
+}
+
+#timer {
+    margin-top: 10px;
+    font-size: 24px; /* Make timer text larger */
+    color: #333;
+    font-weight: bold; /* Make timer text bold */
+}
+
+#message {
+    margin-top: 15px;
+    color: red; /* Error message color */
+}
