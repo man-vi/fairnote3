@@ -88,6 +88,12 @@ input {
 .image-button img {
     width: 100px;
     height: 100px;
+    transition: width 0.3s, height 0.3s;
+}
+
+.image-button img.recording {
+    width: 60px;
+    height: 60px;
 }
 
 #timer {
