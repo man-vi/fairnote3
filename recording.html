@@ -3,18 +3,44 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Voice Recording</title>
+        <title>FairNote - Home</title>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <div class="container">
-            <h1>Record Your Voice</h1>
-            <button id="recordButton" class="image-button">
-                <img src="./start-recording.png" alt="Start Recording" />
-            </button>
-            <div id="timer">00:00</div>
-            <div id="message"></div>
+        <header>
+            <nav>
+                <div class="logo">FairNote</div>
+                <ul>
+                    <li><button id="newRecordingBtn">New Recording</button></li>
+                    <li><button id="logoutBtn">Logout</button></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="recordingSection">
+                <h2>Record Your Voice</h2>
+                <button id="recordButton" class="image-button">
+                    <img src="./start-recording.png" alt="Start Recording" />
+                </button>
+                <div id="timer">00:00</div>
+                <!-- <div id="processingIndicator" class="processing-indicator">
+                    <div class="spinner"></div>
+                    <p>Processing audio...</p>
+                </div> -->
+                <div id="recordingMessage"></div>
+            </section>
+            <section id="conversationsSection">
+                <h2>Previous Conversations</h2>
+                <div id="conversationsList"></div>
+            </section>
+        </main>
+        <div id="conversationModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+            </div>
         </div>
+        <div id="message" style="display: none"></div>
         <script src="recording.js"></script>
     </body>
 </html>

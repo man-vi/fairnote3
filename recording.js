@@ -6,6 +6,39 @@ let recordingTime = 0;
 let timerInterval;
 let isRecording = false; // Track recording state
 
+const newRecordingBtn = document.getElementById("newRecordingBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const recordingSection = document.getElementById("recordingSection");
+const conversationsSection = document.getElementById("conversationsSection");
+const conversationsList = document.getElementById("conversationsList");
+const modal = document.getElementById("conversationModal");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementsByClassName("close")[0];
+
+newRecordingBtn.addEventListener("click", showRecordingSection);
+logoutBtn.addEventListener("click", logout);
+closeModal.addEventListener("click", closeConversationModal);
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    closeConversationModal();
+  }
+});
+
+// Add these functions
+function showRecordingSection() {
+  recordingSection.style.display = "block";
+  conversationsSection.style.display = "none";
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+}
+
+function closeConversationModal() {
+  modal.style.display = "none";
+}
+
 document
   .getElementById("recordButton")
   .addEventListener("click", toggleRecording);
@@ -86,6 +119,54 @@ function displayFairNoteData(data) {
         <h3>Follow-up Email</h3>
         <pre>${data.follow_up_email}</pre>
     `;
+  saveConversation(data);
+  addConversationCard(data);
+}
+
+function saveConversation(data) {
+  let conversations = JSON.parse(localStorage.getItem("conversations") || "[]");
+  data.date = new Date().toISOString();
+  conversations.unshift(data);
+  localStorage.setItem("conversations", JSON.stringify(conversations));
+}
+
+function addConversationCard(data) {
+  const card = document.createElement("div");
+  card.className = "conversation-card";
+  card.innerHTML = `
+        <h3>${data.company_name}</h3>
+        <p><strong>Recruiter:</strong> ${data.recruiter_name}</p>
+        <p><strong>Date:</strong> ${new Date(data.date).toLocaleDateString()}</p>
+    `;
+  card.addEventListener("click", () => showConversationDetails(data));
+  conversationsList.prepend(card);
+}
+
+function showConversationDetails(data) {
+  modalContent.innerHTML = `
+        <h2>${data.company_name}</h2>
+        <p><strong>Recruiter Name:</strong> ${data.recruiter_name}</p>
+        <p><strong>Contact Details:</strong> ${data.contact_details}</p>
+        <h3>Summary</h3>
+        <p>${data.summary}</p>
+        <h3>Follow-up Email</h3>
+        <pre id="followUpEmail">${data.follow_up_email}</pre>
+        <button class="copy-btn" onclick="copyToClipboard()">Copy Email to Clipboard</button>
+    `;
+  modal.style.display = "block";
+}
+
+function copyToClipboard() {
+  const followUpEmail = document.getElementById("followUpEmail");
+  const textArea = document.createElement("textarea");
+  textArea.value = followUpEmail.textContent;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textArea);
+
+  // Optional: Show a message that the text was copied
+  alert("Follow-up email copied to clipboard!");
 }
 
 function startTimer() {
@@ -170,4 +251,16 @@ async function stopRecording() {
   document.getElementById("recordButton").querySelector("img").src =
     "./start-recording.png";
   stopTimer();
+
+  recordingTime = 0;
+  document.getElementById("timer").innerText = formatTime(recordingTime);
 }
+
+function loadPreviousConversations() {
+  const conversations = JSON.parse(
+    localStorage.getItem("conversations") || "[]",
+  );
+  conversations.forEach(addConversationCard);
+}
+
+loadPreviousConversations();
