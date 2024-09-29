@@ -1,58 +1,116 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e9ecef;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
-.centered-message {
-    text-align: center; /* Center the text */
-    margin: 20px 0; /* Add some vertical space */
-    color: #555; /* Optional: Change text color */
-}
 
 .container {
-    background: white;
-    padding: 40px;
+    background-color: white;
+    padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center; /* Center text inside the container */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
 
 h1 {
-    margin-bottom: 20px;
+    text-align: center;
     color: #333;
 }
 
-.image-button {
-    background: none;
+.centered-message {
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.action-button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #007bff;
+    color: white;
     border: none;
-    padding: 0;
+    border-radius: 4px;
+    font-size: 1rem;
     cursor: pointer;
-    margin-bottom: 20px; /* Spacing below the button */
+    transition: background-color 0.3s;
 }
 
-.image-button img {
-    width: 80px; /* Adjust size for better visibility */
-    height: auto;
-    transition: transform 0.2s; /* Add a subtle scaling effect */
-}
-
-.image-button:active img {
-    transform: scale(0.95); /* Slightly shrink the image on click */
-}
-
-#timer {
-    margin-top: 10px;
-    font-size: 24px; /* Make timer text larger */
-    color: #333;
-    font-weight: bold; /* Make timer text bold */
+.action-button:hover {
+    background-color: #0056b3;
 }
 
 #message {
-    margin-top: 15px;
-    color: red; /* Error message color */
+    margin-top: 1rem;
+    text-align: center;
+    color: #dc3545;
+}
+
+#toggleForm {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#toggleForm a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#toggleForm a:hover {
+    text-decoration: underline;
+}
+
+/* Styles for recording page */
+.image-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.image-button img {
+    width: 100px;
+    height: 100px;
+}
+
+#timer {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+#message {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+#message h2,
+#message h3 {
+    color: #333;
+}
+
+#message pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 1rem;
 }

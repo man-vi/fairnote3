@@ -1,26 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>FairNote</h1>
-        <h4 class="centered-message">Make the best out of your Career Fair Experience!</h4>
-        <form id="loginForm">
-            <div class="input-group">
-                <input type="text" id="username" placeholder="Username" required>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FairNote</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>FairNote</h1>
+            <h4 class="centered-message">
+                Make the best out of your Career Fair Experience!
+            </h4>
+            <div id="loginForm">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <button type="button" id="loginButton" class="action-button">
+                    Login
+                </button>
             </div>
-            <div class="input-group">
-                <input type="password" id="password" placeholder="Password" required>
+            <div id="registerForm" style="display: none">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="regEmail"
+                        placeholder="Email"
+                        required
+                    />
+                </div>
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="regName"
+                        placeholder="Name"
+                        required
+                    />
+                </div>
+                <div class="input-group">
+                    <input
+                        type="password"
+                        id="regPassword"
+                        placeholder="Password"
+                        required
+                    />
+                </div>
+                <button type="button" id="registerButton" class="action-button">
+                    Register
+                </button>
             </div>
-            <button type="submit" class="login-button">Login</button>
-        </form>
-        <div id="message"></div>
-    </div>
-    <script src="script.js"></script>
-</body>
+            <p id="toggleForm">
+                Don't have an account?
+                <a href="#" id="switchForm">Register here</a>
+            </p>
+            <div id="message"></div>
+        </div>
+        <script src="script.js"></script>
+    </body>
 </html>
