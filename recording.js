@@ -189,6 +189,9 @@ function formatTime(seconds) {
 }
 
 async function startRecording() {
+
+  document.getElementById("recordButton").querySelector("img").classList.add("recording")
+                                                                             
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   mediaRecorder = new MediaRecorder(stream);
 
@@ -208,6 +211,8 @@ async function stopRecording() {
   mediaRecorder.stop();
   isRecording = false;
 
+  document.getElementById("recordButton").querySelector("img").classList.remove("recording");
+  
   mediaRecorder.addEventListener("stop", async () => {
     const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
     audioChunks = [];
